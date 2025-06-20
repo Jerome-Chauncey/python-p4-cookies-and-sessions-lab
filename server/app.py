@@ -22,8 +22,8 @@ def clear_session():
 
 @app.route('/articles')
 def index_articles():
-
-    pass
+    articles = Article.query.all()
+    return jsonify([article.to_dict() for article in articles]), 200
 
 @app.route('/articles/<int:id>')
 def show_article(id):
